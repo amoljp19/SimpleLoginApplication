@@ -5,11 +5,12 @@ import java.util.regex.Pattern
 object LoginValidator {
 
     private val VALID_USERNAME: Pattern = Pattern.compile(
-        "\\S\\w",
+        "[0-9a-zA-Z]+",
         Pattern.CASE_INSENSITIVE
     )
 
-    private val VALID_PASSWORD: Pattern = Pattern.compile("[0-9a-zA-Z@!?_]", Pattern.CASE_INSENSITIVE)
+    private val VALID_PASSWORD: Pattern =
+        Pattern.compile("[0-9a-zA-Z@!?_]+", Pattern.CASE_INSENSITIVE)
 
     private const val MIN_PASSWORD_LENGTH = 5
 
@@ -17,7 +18,8 @@ object LoginValidator {
         return if (username.isEmpty()) {
             false
         } else {
-            VALID_USERNAME.matcher(username).matches()
+            val t1 = VALID_USERNAME.matcher(username).matches()
+            return t1
         }
     }
 
@@ -25,7 +27,9 @@ object LoginValidator {
         return if (password == null || password.trim { it <= ' ' }.isEmpty()) {
             false
         } else {
-            VALID_PASSWORD.matcher(password).matches() && password.trim { it <= ' ' }.length >= MIN_PASSWORD_LENGTH
+            val t2 = VALID_PASSWORD.matcher(password)
+                .matches() && password.trim { it <= ' ' }.length >= MIN_PASSWORD_LENGTH
+            return t2
         }
     }
 }

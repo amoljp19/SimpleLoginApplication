@@ -1,11 +1,10 @@
 package com.softaai.simpleloginapplication.login.utils
 
-import com.softaai.simpleloginapplication.login.model.LoginUser
-
 sealed class LoginState {
-    data class Error(val message: String?) : LoginState()
+    object LoginEnabled : LoginState()
+    object LoginDisabled : LoginState()
+    object LoginSuccess : LoginState()
     object ValidCredentialsState : LoginState()
     object InValidUsernameState : LoginState()
     object InValidPasswordState : LoginState()
-    data class Success(val data: LoginUser?) : LoginState()
 }
