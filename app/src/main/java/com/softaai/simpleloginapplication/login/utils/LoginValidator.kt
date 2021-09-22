@@ -1,4 +1,4 @@
-package com.softaai.simpleloginapplication.login
+package com.softaai.simpleloginapplication.login.utils
 
 import java.util.regex.Pattern
 
