@@ -104,7 +104,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showMainScreen() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("username", loginUser.username);
+        intent.putExtra("username", loginUser.username)
         startActivity(intent)
         finish()
     }
